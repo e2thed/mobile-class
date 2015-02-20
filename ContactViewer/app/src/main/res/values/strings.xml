@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ContactViewer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_contact_detail">ContactDetail</string>
+    <string name="title_activity_contact_edit">Edit Contact</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_close">Close</string>
+
+</resources>

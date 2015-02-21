@@ -46,12 +46,16 @@ public class ListContactsActivity extends ListActivity {
         DatabaseOperations dop = new DatabaseOperations(ctx);
         Cursor cr = dop.getContacts(dop);
 
-        cr.moveToFirst();
-        do {
-            contacts.add(new Contact(cr.getString(0), cr.getString(1), cr.getString(2), cr.getString(3), cr.getString(4)));
+        if(cr.getColumnCount() == 0) {
+            cr.moveToFirst();
+            do {
+                contacts.add(new Contact(cr.getString(0), cr.getString(1), cr.getString(2), cr.getString(3), cr.getString(4)));
 
-        } while (cr.moveToNext());
-
+            } while (cr.moveToNext());
+        }
+//        else {
+//            contacts.add(new Contact("New Guy", "The Dude", "555-1212", "m@u.com", "@handle"));
+//        }
 
         setListAdapter(new ContactAdapter(this, R.layout.contact_item, contacts));
     }

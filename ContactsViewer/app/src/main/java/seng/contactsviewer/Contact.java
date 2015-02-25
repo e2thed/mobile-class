@@ -12,7 +12,8 @@ public class Contact implements Serializable{
 
     }
 
-    public Contact(String name, String title, String phone, String email, String twitterId) {
+    public Contact(String _id, String name, String title, String phone, String email, String twitterId) {
+        this._id = _id;
         this.name = name;
         this.title = title;
         this.phone = phone;
@@ -20,11 +21,21 @@ public class Contact implements Serializable{
         this.twitterId = twitterId;
     }
 
+    private String _id;
     private String name;
     private String title;
     private String email;
     private String phone;
     private String twitterId;
+
+    public String get_Id() {
+        return _id;
+    }
+
+    public void set_Id(String _Id) {
+        this._id = _Id;
+    }
+
 
     public String getTwitterId() {
         return twitterId;

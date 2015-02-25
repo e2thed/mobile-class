@@ -4,56 +4,72 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
-    <EditText
+    <TextView
         android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_name"
+        android:layout_marginTop="10sp"
+        android:text="@string/text_name"
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <EditText
+    <View
+        style="@style/HorizontalRule"
+        android:layout_below="@id/item_name"/>
+
+    <TextView
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
         android:layout_below="@id/item_name"
-        android:hint="@string/hint_title"
+        android:text="@string/text_title"
         android:textSize="25sp"/>
 
-    <EditText
+    <TextView
         android:id="@+id/item_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/item_name"
-        android:hint="@string/hint_phone"
-        android:textSize="25sp"
-        android:inputType="phone" />
+        android:text="@string/text_phone"
+        android:textSize="25sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/item_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
         android:layout_below="@id/item_phone"
-        android:hint="@string/hint_email"
-        android:textSize="25sp"
-        android:inputType="textEmailAddress" />
+        android:text="@string/text_email"
+        android:textSize="25sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/item_twitterId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_below="@id/item_email"
-        android:hint="@string/hint_twitterid"
+        android:layout_marginTop="10sp"
+        android:layout_below="@id/item_email"
+        android:text="@string/text_twitterid"
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/deleteButton"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:text="@string/button_save"
+        android:text="@string/text_delete"
         android:textAlignment="center" />
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal"
+        android:text="@string/text_edit"
+        android:textAlignment="center" />
+
 </RelativeLayout>

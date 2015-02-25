@@ -18,7 +18,19 @@
         </activity>
         <activity
             android:name=".EditContactActivity"
-            android:label="@string/title_activity_contact_detail" >
+            android:label="@string/title_activity_contact_edit" >
+        </activity>
+        <activity
+            android:name=".ContactDetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
+        <activity
+            android:name=".AddContactActivity"
+            android:label="@string/title_activity_add_contact" >
+        </activity>
+        <activity
+            android:name=".DeleteContactActivity"
+            android:label="@string/title_activity_delete_contact" >
         </activity>
     </application>
 

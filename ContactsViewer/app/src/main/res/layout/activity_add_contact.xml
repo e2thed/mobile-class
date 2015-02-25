@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="8dp">
+
+<EditText
+    android:id="@+id/item_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Name"
+    android:textSize="25sp"
+    android:textStyle="bold" />
+
+<EditText
+    android:id="@+id/item_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/item_name"
+    android:hint="Title"
+    android:textSize="25sp"/>
+
+<EditText
+    android:id="@+id/item_phone"
+    android:inputType="phone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_below="@id/item_name"
+    android:hint="Phone"
+    android:textSize="25sp" />
+
+<EditText
+    android:id="@+id/item_email"
+    android:inputType="textWebEmailAddress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/item_phone"
+    android:hint="Email"
+    android:textSize="25sp" />
+
+<EditText
+    android:id="@+id/item_twitterId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/item_email"
+    android:hint="Twitter Id"
+    android:textSize="25sp" />
+<Button
+    android:id="@+id/saveButton"
+    android:layout_width="100dp"
+    android:layout_height="40dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:gravity="center_horizontal"
+    android:text="Save"
+    android:textAlignment="center" />
+</RelativeLayout>

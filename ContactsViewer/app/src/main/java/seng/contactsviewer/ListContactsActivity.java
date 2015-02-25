@@ -14,56 +14,41 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.util.Log;
 
 
 public class ListContactsActivity extends ListActivity {
     Context ctx = this;
-
-    private List<Contact> contacts = new ArrayList<Contact>();
-    private ListView contactListView;
+    private List<Contact> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_contacts);
-        contactListView = getListView();
+
+        ListView contactListView = getListView();
+
+        populateList();
 
         contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent editContactIntent = new Intent(view.getContext(), EditContactActivity.class);
-                editContactIntent.putExtra("Contact", contacts.get(position));
-                startActivity(editContactIntent);
+                Intent contactDetailIntent = new Intent(view.getContext(), ContactDetailActivity.class);
+                contactDetailIntent.putExtra("Contact", contacts.get(position));
+                startActivityForResult(contactDetailIntent, 1);
             }
         });
-
-//        contacts.add(new Contact("Kaylee", "Engineer", "555-1212", "k@g.com", "@k"));
-//        contacts.add(new Contact("Rog", "Golfer", "555-1212", "k@g.com", "@k"));
-//        contacts.add(new Contact("Alabama Jones", "Engineer", "555-1212", "k@g.com", "@k"));
-
-        DatabaseOperations dop = new DatabaseOperations(ctx);
-        Cursor cr = dop.getContacts(dop);
-
-        if(cr.getColumnCount() == 0) {
-            cr.moveToFirst();
-            do {
-                contacts.add(new Contact(cr.getString(0), cr.getString(1), cr.getString(2), cr.getString(3), cr.getString(4)));
-
-            } while (cr.moveToNext());
-        }
-//        else {
-//            contacts.add(new Contact("New Guy", "The Dude", "555-1212", "m@u.com", "@handle"));
-//        }
-
-        setListAdapter(new ContactAdapter(this, R.layout.contact_item, contacts));
     }
 
 //    @Override
-//    protected void onListItemClick(ListView l, View v, int position, long id){
-//        Intent editContactIntent = new Intent(this, EditContactActivity.class);
-//        startActivityForResult(editContactIntent, 1);
+//    protected void onListItemClick(ListView l, View v, int position, long id) {
+//        Intent contactDetailIntent = new Intent(ctx, ContactDetailActivity.class);
+//        startActivityForResult(contactDetailIntent, 1);
 //    }
 
     @Override
@@ -75,18 +60,34 @@ public class ListContactsActivity extends ListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        boolean handled = true;
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_add_contact:
+                Intent addContactIntent = new Intent(ctx, AddContactActivity.class);
+                startActivityForResult(addContactIntent,1);
+                Log.d("ListActivity", "Going to AddActivity");
+            case R.id.action_close:
+                onClickMenuClose();
+                break;
+            default:
+                handled = super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        return handled;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        populateList();
+    }
+
+    void onClickMenuClose() {
+        finish();
+    }
+
     class ContactAdapter extends ArrayAdapter<Contact> {
 
         public ContactAdapter(Context context, int resource, List<Contact> objects) {
@@ -118,6 +119,34 @@ public class ListContactsActivity extends ListActivity {
 
             return view;
         }
+    }
+
+    private void populateList() {
+        SQLController dbcon = new SQLController(this);
+        try {
+            dbcon.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Cursor cr = dbcon.fetch();
+
+        if (cr != null && cr.moveToFirst()) {
+            cr.moveToFirst();
+            contacts = new ArrayList<>();
+            do {
+                contacts.add(new Contact(
+                        cr.getString(0),
+                        cr.getString(1),
+                        cr.getString(2),
+                        cr.getString(3),
+                        cr.getString(4),
+                        cr.getString(5)));
+
+            } while (cr.moveToNext());
+
+            setListAdapter(new ContactAdapter(this, R.layout.contact_item, contacts));
+        }
+        dbcon.close();
     }
 }
 

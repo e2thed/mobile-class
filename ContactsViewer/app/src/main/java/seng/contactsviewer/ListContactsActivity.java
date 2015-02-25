@@ -68,6 +68,7 @@ public class ListContactsActivity extends ListActivity {
                 Intent addContactIntent = new Intent(ctx, AddContactActivity.class);
                 startActivityForResult(addContactIntent,1);
                 Log.d("ListActivity", "Going to AddActivity");
+                break;
             case R.id.action_close:
                 onClickMenuClose();
                 break;

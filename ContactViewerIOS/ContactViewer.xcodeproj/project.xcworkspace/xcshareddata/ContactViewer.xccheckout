@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E1775D87-7C28-4EB6-B362-0A8EB784FAED</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ContactViewer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1D69DDE0C9051B68AA4E31A7EB759157DB13F042</key>
+		<string>https://github.com/e2thed/mobile-class.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ContactViewerIOS/ContactViewer.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1D69DDE0C9051B68AA4E31A7EB759157DB13F042</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/e2thed/mobile-class.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1D69DDE0C9051B68AA4E31A7EB759157DB13F042</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1D69DDE0C9051B68AA4E31A7EB759157DB13F042</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mobile-class</string>
+		</dict>
+	</array>
+</dict>
+</plist>

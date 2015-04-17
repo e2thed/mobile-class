@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F667EFC1ADF3C86004303DA /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F667EFB1ADF3C86004303DA /* FileHandler.swift */; };
 		93FD3E011AD9A80F00D10AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD3E001AD9A80F00D10AED /* AppDelegate.swift */; };
 		93FD3E031AD9A80F00D10AED /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD3E021AD9A80F00D10AED /* MasterViewController.swift */; };
 		93FD3E051AD9A80F00D10AED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD3E041AD9A80F00D10AED /* DetailViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F667EFB1ADF3C86004303DA /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		93FD3DFB1AD9A80F00D10AED /* ContactViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FD3DFF1AD9A80F00D10AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93FD3E001AD9A80F00D10AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				93FD3E221AD9A83900D10AED /* Contact.swift */,
 				93FD3E241AD9BCE900D10AED /* EditViewController.swift */,
 				93FD3E261AD9BFD000D10AED /* EditViewController.xib */,
+				1F667EFB1ADF3C86004303DA /* FileHandler.swift */,
 			);
 			path = ContactViewer;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F667EFC1ADF3C86004303DA /* FileHandler.swift in Sources */,
 				93FD3E251AD9BCE900D10AED /* EditViewController.swift in Sources */,
 				93FD3E231AD9A83900D10AED /* Contact.swift in Sources */,
 				93FD3E051AD9A80F00D10AED /* DetailViewController.swift in Sources */,

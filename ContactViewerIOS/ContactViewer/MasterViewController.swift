@@ -2,7 +2,7 @@
 //  MasterViewController.swift
 //  ContactViewer
 //
-//  Created by Giovanni Galasso on 4/11/15.
+//  Created by Edward Castillo on 4/11/15.
 //  Copyright (c) 2015 seng5199-3. All rights reserved.
 //
 
@@ -13,9 +13,8 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    //var objects = [AnyObject]()
     var contacts = [Contact]()
-    let file = "data.json"
+    let fh = FileHandler()
     
 
     override func awakeFromNib() {
@@ -31,52 +30,44 @@ class MasterViewController: UITableViewController {
         contacts.append(contact2)
         contacts.append(contact3)
         
-        //if let dirs : [String] = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String] {
-        //    let dir = dirs[0] //documents directory
-        //    let path = dir.stringByAppendingPathComponent(file)
-        //    let text = NSJSONSerialization.writeJSONObject(contacts, toStream: NSOutputStream.outputStreamToMemory(), options: NSJSONWritingOptions.PrettyPrinted, error: NSErrorPointer.null())
-        //}
+        var details = [[String:String]]()
         
-        //let jsonData = NSJSONSerialization.writeJSONObject(contacts, toStream: NSOutputStream.dictionaryWithValuesForKeys, options: NSJSONWritingOptions.PrettyPrinted, error: NSErrorPointer.null())
-        
-        //let file = NSBundle(forClass: MasterViewController.self).pathForResource("ContactViewer", ofType: "json")
-        //NSJSONSerialization.writeJSONObject(contacts, toStream:  , options: <#NSJSONWritingOptions#>, error: <#NSErrorPointer#>)
-        
-        //let data = NSJSONSerialization.dataWithJSONObject(contacts, options: nil, error: nil)
-        //let string = NSString(data: data!, encoding: NS/Users/user28142/mobile-class/ContactViewerIOS/ContactViewer/DetailViewController.swiftUTF8StringEncoding)
-        //let diction = NSDictionary(dictionary: contacts);
-        //diction.allKeysForObject(contacts)
-        //let array = ["one", "two"]
-        //let dic = NSDictionary.dictionaryWithValuesForKeys(contacts)
-        //let data = NSJSONSerialization.dataWithJSONObject(dic, options: nil, error: nil)
-        //let string = NSString(data: data!, encoding: NSUTF8StringEncoding)
-        
-        var details = [[String:String]]()//["name":contact1.name,"phone":contact1.phone,"title":contact1.title,"email":contact1.email,"twitterId":contact1.twitterId]
-        
-        
-        /*for contact in contacts {
-            details[] = ["name":contact.name,"phone":contact.phone,"title":contact.title,"email":contact.email,"twitterId":contact.twitterId]
-        }*/
-        
-        for var index = 0; index < contacts.count; ++index {
-            if index == 0{
-                details = [["name":contacts[index].name,"phone":contacts[index].phone,"title":contacts[index].title,"email":contacts[index].email,"twitterId":contacts[index].twitterId]]
-            } else {
-                details.append(["name":contacts[index].name,"phone":contacts[index].phone,"title":contacts[index].title,"email":contacts[index].email,"twitterId":contacts[index].twitterId])            }
+        for var i = 0; i < contacts.count; ++i {
+            details.append(["name":contacts[i].name
+                ,"phone":contacts[i].phone
+                ,"title":contacts[i].title
+                ,"email":contacts[i].email
+                ,"twitterId":contacts[i].twitterId])
         }
         
-        //for detail in details{
-        //println("\(detail)")
-        //}
         
-        let data = NSJSONSerialization.dataWithJSONObject(details, options: nil, error: nil)
         
-        let string = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-
-        print(string)
-
+//        for var index = 0; index < contacts.count; ++index {
+//            if index == 0 {
+//                details = [["name":contacts[index].name,"phone":contacts[index].phone,"title":contacts[index].title,"email":contacts[index].email,"twitterId":contacts[index].twitterId]]
+//            } else {
+//                details.append(["name":contacts[index].name,"phone":contacts[index].phone,"title":contacts[index].title,"email":contacts[index].email,"twitterId":contacts[index].twitterId])
+//            }
+//        }
         
-
+        ////This is for the initial creation of the file
+        let myData = fh.convertToJSON(details)
+        fh.writeToFile(myData)
+        
+        print(fh.readFromFile())
+        
+        var data = fh.readFromFile()
+        
+        if let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+            if let items = json["items"] as? NSArray {
+            for item in items {
+            // construct your model objects here
+            }
+            }
+        }
+        
+        
+        
     }
 
     override func viewDidLoad() {
